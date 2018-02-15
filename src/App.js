@@ -15,7 +15,8 @@ const App = () => (
   <div>
   <div className="col-md-4 col-offset-4">
     <div className="">
-    <h3>Menu</h3>
+    <br/>
+    <h2>Menu</h2>
       <List />
       </div>
       <div className="">
