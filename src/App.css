@@ -17,11 +17,19 @@
 }
 
 .App-title {
-    font-size: 1.5em;
+    padding-top: 30px;
+
+    font-size: 3em;
 }
 
 .App-intro {
+    padding-top: 20px;
+
     font-size: large;
+}
+
+.size {
+    font-size: 40px;
 }
 
 @keyframes App-logo-spin {
@@ -32,4 +40,3 @@
         transform: rotate(360deg);
     }
 }
-

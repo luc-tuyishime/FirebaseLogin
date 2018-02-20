@@ -1,31 +1,30 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import store from './js/store/index';
 import { addArticle } from './js/actions/index';
+import { Link,Route } from 'react-router-dom';
+import MenusPage from './js/components/MenusPage'
 import './App.css';
-import List from "./js/components/List";
-import ConnectedForm from "./js/components/Form";
 
 
 
 
+class App extends Component {
+    render() {
+        return (
+         <div className="App">
+         <p className="App-title">Welcome to lunchex</p>
+           <p className="App-intro">
+             <Link className="size" to="menus">Menus</Link>
+           </p>
+
+           <Route path="/menus" component={MenusPage} />
+         </div>   
+        );
+    }
+}
 
 
-const App = () => (
-  <div>
-  <div className="col-md-4 col-offset-4">
-    <div className="">
-    <br/>
-    <h2>Menu</h2>
-      <List />
-      </div>
-      <div className="">
-      <ConnectedForm />
-      </div>
-    </div>
-  </div>
 
-);
 export default App;
 
 

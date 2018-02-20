@@ -2,9 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from "react-redux";
-import store from "./js/store/index";
-import { addMenu } from './js/actions/index';
 import App from './App';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from "./rootReducer";
+import { provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import registerServiceWorker from './registerServiceWorker';
 
 //store import reducers
@@ -12,16 +16,23 @@ import registerServiceWorker from './registerServiceWorker';
 // actions import constant
 
 window.store = store;
-window.addMenu = addMenu;
 
-store.subscribe(() => console.log('Look ma, Redux!!'))
 
-store.dispatch( addMenu({ name: 'Pilao', id: 1 }) )
+const store = createStore(
+ rootReducer,
+ composeWithDevTools(
+  applyMiddleware(thunk)	
+ )
+);
+
+
 
 
 ReactDOM.render(
+	<BrowserRouter>
 	<Provider store={store}>
 	<App />
-	</Provider>,
+	</Provider>
+	</BrowserRouter>,
 	document.getElementById('root'));
 registerServiceWorker();
